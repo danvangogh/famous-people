@@ -1,7 +1,7 @@
 const pg = require("pg");
 const settings = require("./settings.json");
 const fName = process.argv[2];
-
+const moment = require("moment");
 
 const client = new pg.Client({
   user     : settings.user,
@@ -12,16 +12,20 @@ const client = new pg.Client({
   ssl      : settings.ssl
 });
 
-
 client.connect((err) => {
   if (err) {
     return console.error("Connection Error", err);
   }
-  client.query(`SELECT * FROM famous_people WHERE first_name LIKE '${fName}' or last_name LIKE '${fName}'`, (err, result) => {
+  client.query(`SELECT * FROM famous_people WHERE first_name LIKE '${fName}' OR last_name LIKE '${fName}'`, (err, result) => {
     if (err) {
       return console.error("error running query", err);
     }
-    console.log(result.rows); //output: 1
+    let queryResults = result.rows;
+    queryResults.forEach((entry, index) => {
+      console.log(` - ${index}: ${entry.first_name} ${entry.last_name}, born ${moment(entry.birthdate).format("YYYY-MM-DD")};`)
+      // console.log("index = ", index)
+    })
+    // console.log(result.rows); //output: 1
     client.end();
   });
 });
