@@ -1,0 +1,19 @@
+{
+  "name": "famous_people",
+  "version": "1.0.0",
+  "description": "",
+  "main": "knex_lookup.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danvangogh/famous-people.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danvangogh/famous-people/issues"
+  },
+  "homepage": "https://github.com/danvangogh/famous-people#readme"
+}

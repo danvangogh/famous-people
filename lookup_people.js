@@ -21,8 +21,9 @@ client.connect((err) => {
       return console.error("error running query", err);
     }
     let queryResults = result.rows;
+    console.log(`${queryResults.length} people named ${fName}`)
     queryResults.forEach((entry, index) => {
-      console.log(` - ${index}: ${entry.first_name} ${entry.last_name}, born ${moment(entry.birthdate).format("YYYY-MM-DD")};`)
+      console.log(` - ${index + 1}: ${entry.first_name} ${entry.last_name}, born ${moment(entry.birthdate).format("YYYY-MM-DD")};`)
       // console.log("index = ", index)
     })
     // console.log(result.rows); //output: 1
